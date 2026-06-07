@@ -1,2 +1,62 @@
-/sources/domains.json
-/sources/cidrs.json
+{
+  "reject": [
+    "adservice.google.com",
+    "doubleclick.net",
+    "googlesyndication.com",
+    "ads.youtube.com"
+  ],
+
+  "apple": [
+    "apple.com",
+    "icloud.com",
+    "mzstatic.com",
+    "itunes.apple.com"
+  ],
+
+  "icloud": [
+    "icloud.com",
+    "icloud-content.com",
+    "icloud-drive.com"
+  ],
+
+  "telegram": [
+    "t.me",
+    "telegram.org",
+    "telegram.me",
+    "cdn-telegram.org"
+  ],
+
+  "proxy": [
+    "github.com",
+    "githubusercontent.com",
+    "google.com",
+    "googleapis.com",
+    "gstatic.com"
+  ],
+
+  "microsoft": [
+    "microsoft.com",
+    "office.com",
+    "live.com",
+    "windows.com",
+    "msedge.net"
+  ],
+
+  "cn": [
+    "baidu.com",
+    "qq.com",
+    "taobao.com",
+    "jd.com",
+    "bilibili.com",
+    "163.com",
+    "sina.com.cn"
+  ],
+
+  "cncidr": [
+    "1.0.1.0/24",
+    "1.0.2.0/23",
+    "1.0.8.0/21",
+    "1.0.32.0/19",
+    "1.1.0.0/24"
+  ]
+}
