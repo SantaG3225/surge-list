@@ -1,24 +1,25 @@
-import { parseDomains } from "./domainParser";
-import { parseCidrs } from "./cidrParser";
-import { writeFileSync, mkdirSync } from "fs";
-import sources from "../../sources.json";
+import { parseDomains } from "./domainParser.js";
+import { parseCidrs } from "./cidrParser.js";
+import sources from "../../sources.json" assert { type: "json" };
+import { writeFileSync } from "fs";
 
-export async function buildAll(config: { outputDir: string; files: string[] }) {
-  mkdirSync(config.outputDir, { recursive: true });
-
-  for (const name of config.files) {
+export async function buildAll({ outputDir, files }) {
+  for (const name of files) {
     const list = sources[name];
-
-    if (!list) continue;
-
-    let output = "";
-
-    if (name === "cncidr") {
-      output = parseCidrs(list);
-    } else {
-      output = parseDomains(list);
+    if (!list) {
+      console.error(`❌ Missing source: ${name}`);
+      continue;
     }
 
-    writeFileSync(`${config.outputDir}/${name}.txt`, output.trim() + "\n");
+    let result: string[] = [];
+
+    if (name.includes("cidr")) {
+      result = parseCidrs(list);
+    } else {
+      result = parseDomains(list);
+    }
+
+    writeFileSync(`${outputDir}/${name}.txt`, result.join("\n"));
+    console.log(`✔ Generated ${name}.txt`);
   }
 }
