@@ -1,1 +1,1 @@
-export * from "./buildAll";
+import { buildAll } from "./parsers/index.js";
