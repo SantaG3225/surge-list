@@ -1,0 +1,33 @@
+name: Generate Rulesets
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 每天 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm install
+
+      - name: Generate rulesets
+        run: npm run generate   # 你在 package.json 里定义的脚本
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add generated/*.txt
+          git commit -m "Auto-update rulesets"
+          git push
