@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "generate": "ts-node scripts/generate.ts"
+  }
+}
