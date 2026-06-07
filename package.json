@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "generate": "ts-node scripts/generate.ts"
+    "generate": "node --loader ts-node/esm scripts/generate.ts"
   },
   "dependencies": {
     "ts-node": "^10.9.2",
