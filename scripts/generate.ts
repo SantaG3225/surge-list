@@ -3,7 +3,6 @@ import { mkdirSync } from "fs";
 
 async function main() {
   mkdirSync("generated", { recursive: true });
-
   await buildAll({
     outputDir: "generated",
     files: [
