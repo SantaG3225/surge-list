@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "generate": "node --loader ts-node/esm scripts/generate.ts"
+    "generate": "tsx scripts/generate.ts"
   },
   "dependencies": {
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
     "typescript": "^5.4.0"
   }
 }
