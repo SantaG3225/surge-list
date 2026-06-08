@@ -1,1 +1,2 @@
 jjc.edu
+DOMAIN-KEYWORD,jjc
