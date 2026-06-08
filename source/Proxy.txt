@@ -1,3 +1,2 @@
 github.com
-
-DOMAIN-KEYWORD,github
+DOMAIN,github.com
