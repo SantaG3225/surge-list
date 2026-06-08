@@ -26,13 +26,24 @@ jobs:
             name=$(basename "$file" .txt)
 
             cat "$file" \
+            | grep -v '^#' \
             | sed '/^$/d' \
             | sort -u \
-            | awk '{print "DOMAIN-SUFFIX,"$0}' \
+            | awk '
+              {
+                if ($0 ~ /,/)
+                  print $0;
+                else
+                  print "DOMAIN-SUFFIX,"$0
+              }
+            ' \
             > "rules/${name}.list"
 
             echo "Generated rules/${name}.list"
           done
+
+          cd rules
+          sha256sum *.list > checksums.txt
 
       - name: Commit Changes
         run: |
