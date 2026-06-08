@@ -56,5 +56,5 @@ jobs:
           git commit -m "Auto Update Rules"
       - name: Push
         run: |
-    git pull --rebase origin main
-    git push origin main
+          git pull --rebase origin main
+          git push origin main
