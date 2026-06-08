@@ -17,17 +17,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create Rules Directory
-        run: mkdir -p rules
+- name: Generate RuleSets
+  run: |
+    mkdir -p rules
 
-      - name: Generate AI RuleSet
-        run: |
-          cat source/AI.txt \
-          | sed '/^$/d' \
-          | sort -u \
-          | awk '{print "DOMAIN-SUFFIX,"$0}' \
-          > rules/AI.list
+    for file in source/*.txt
+    do
+      name=$(basename "$file" .txt)
 
+      cat "$file" \
+      | sed '/^$/d' \
+      | sort -u \
+      | awk '{print "DOMAIN-SUFFIX,"$0}' \
+      > "rules/${name}.list"
+
+      echo "Generated rules/${name}.list"
+    done
       - name: Commit Changes
         run: |
           git config user.name github-actions
