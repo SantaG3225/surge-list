@@ -55,6 +55,6 @@ jobs:
           git diff --staged --quiet || \
           git commit -m "Auto Update Rules"
       - name: Push
-  run: |
+        run: |
     git pull --rebase origin main
     git push origin main
