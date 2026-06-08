@@ -1,1 +1,2 @@
-DOMAIN,github.com
+DOMAIN-SUFFIX,github.com
+DOMAIN,google.com
